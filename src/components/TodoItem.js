@@ -4,9 +4,9 @@ import './TodoItem.css'
 class TodoItem extends Component {
     render() {
         const { item } = this.props;
-        let className = 'TotoItem';
+        let className = 'TodoItem';
         if(item.isComplete) {
-            className += ' TotoItem-complete'
+            className += ' TodoItem-complete'
         }
         return (
             <div className={className}>

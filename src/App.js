@@ -5,26 +5,45 @@ import { Component } from "react";
 class App extends Component {
   constructor() {
     super();
-    this.todoItems = [
-      {title: 'Go to school.', isComplete: true},
-      {title: 'Buy a book.', isComplete: false},
-      {title: 'Go home at 7:00PM.', isComplete: false}
-    ];
+    this.state = {
+      todoItems: [
+        {title: 'Go to school.', isComplete: true},
+        {title: 'Buy a book.', isComplete: false},
+        {title: 'Go home at 7:00PM.', isComplete: false}
+      ]
+    }
   }
+
+  // onItemClicked(item) {
+  //   return (event) => {
+  //     console.log(item);
+  //   };
+  // }
+
+  onItemClicked() {
+    console.log('item clicked');
+  }
+
   render() {
-    return (
-      <div className="App">
-        {
-          this.todoItems.length > 0 && this.todoItems.map((item, index) => ( 
-            <TodoItem key={index} item={item} />
+    const { todoItems } = this.state;
+    if(todoItems.length) {
+      return (
+        <div className="App">
+          {
+            todoItems.length && todoItems.map((item, index) => ( 
+              <TodoItem 
+                key={index} 
+                item={item} 
+                onClick={this.onItemClicked} />
+              )
             )
-          )
-        }
-        {
-          this.todoItems.length === 0 && 'Nothing here'
-        }
-      </div>
-    );
+          }
+          {
+            todoItems.length === 0 && 'Nothing here'
+          }
+        </div>
+      )
+    }
   }
 }
 
